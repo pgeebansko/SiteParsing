@@ -34,6 +34,25 @@ def read_time(txt):
         return '----'
 
 
+def check_time(txt):
+    p = row.find('span', 'hour')
+    s = str(type(p))
+    result = ''
+    if s != "<class 'NoneType'>":
+        p = p.text
+        lines = p.splitlines()
+        s = lines[1].lstrip().rstrip()
+        s = s.rpartition(', ')
+        match_date = s[0]
+        match_time = s[2]
+        if match_time < '22:00':
+            return True
+        else:
+            return False
+    else:
+        return False
+
+
 url = "https://gong.bg/livescore"
 r = requests.get(url)
 # print(r.text)
@@ -44,7 +63,7 @@ tables = soup.findAll('div', class_='ls-schedule-table')
 for table_html in tables:
     title = table_html.find('a', 'gtm-Livescore').find('h2').text
     match_rows = table_html.findAll('div', 'match-row')
-    if len(match_rows) > 0:
+    if (len(match_rows) > 0) and check_time(row):
         print(title)
         for row in match_rows:
             host = row.find('div', 'host').text
