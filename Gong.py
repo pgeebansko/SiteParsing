@@ -45,9 +45,9 @@ for table_html in tables:
     title = table_html.find('a', 'gtm-Livescore').find('h2').text
     match_rows = table_html.findAll('div', 'match-row')
     if len(match_rows) > 0:
-        print(title)
+        print('\n'+title)
         for row in match_rows:
             host = row.find('div', 'host').text
             guest = row.find('div', 'guest').text
-            print(f'      {host} - {guest}   ({read_status(row)}) ')
+            print(f'    {host} - {guest}   ({read_status(row)}) ')
 
