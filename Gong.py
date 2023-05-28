@@ -50,7 +50,7 @@ def check_time(txt):
             s = s.rpartition(', ')
             match_date = s[0]
             match_time = s[2]
-            if match_time < '22:00':
+            if match_time < '17:00':
                 return True
             else:
                 return False
@@ -73,7 +73,6 @@ for table_html in tables:
         for row in match_rows:
             host = row.find('div', 'host').text
             guest = row.find('div', 'guest').text
-"""            if check_time(row):
+            if check_time(row):
                 print(f'      {host} - {guest}   ({read_status(row)}) ')
 
-"""
