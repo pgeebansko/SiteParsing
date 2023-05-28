@@ -44,7 +44,7 @@ tables = soup.findAll('div', class_='ls-schedule-table')
 for table_html in tables:
     title = table_html.find('a', 'gtm-Livescore').find('h2').text
     match_rows = table_html.findAll('div', 'match-row')
-    if len(match_rows)> 0 and ('Бундеслига, Германия' in title):
+    if len(match_rows) > 0 and ('Бундеслига, Германия' in title):
         print(title)
         for row in match_rows:
             host = row.find('div', 'host').text
