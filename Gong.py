@@ -73,6 +73,7 @@ for table_html in tables:
         for row in match_rows:
             host = row.find('div', 'host').text
             guest = row.find('div', 'guest').text
-            if check_time(row):
+"""            if check_time(row):
                 print(f'      {host} - {guest}   ({read_status(row)}) ')
 
+"""
